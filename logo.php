@@ -1,0 +1,1 @@
+<img src="<?= To::URL($f = __DIR__ . DS . 'asset' . DS . 'png' . DS . 'logo.png'); ?>?v=<?= filemtime($f); ?>" srcset="<?= To::URL($f = __DIR__ . DS . 'asset' . DS . 'png' . DS . 'logo.2x.png'); ?>?v=<?= filemtime($f); ?> 2x" alt="<?= w($site->title); ?>">
