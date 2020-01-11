@@ -1,11 +1,13 @@
 <?php if ($images): ?>
+<?php $images = array_values($images); ?>
 <div id="carousel" class="carousel slide carousel-fade border-bottom" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carousel" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel" data-slide-to="1" class=""></li>
+    <?php foreach ($images as $i => $image): ?>
+    <li data-target="#carousel" data-slide-to="<?= $i; ?>" class="<?= 0 === $i ? 'active' : ""; ?>"></li>
+    <?php endforeach; ?>
   </ol>
   <div class="carousel-inner">
-    <?php foreach (array_values($images) as $i => $image): ?>
+    <?php foreach ($images as $i => $image): ?>
     <div class="carousel-item<?= 0 === $i ? ' active' : ""; ?>">
       <img src="<?= $image; ?>" class="d-block w-100" alt="<?= basename($image); ?>">
       <div class="container d-none d-md-block">

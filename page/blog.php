@@ -5,16 +5,9 @@
 ]); ?>
 <div class="overflow-hidden">
   <div class="container">
-    <div class="row d-flex align-items-stretch pb-5">
-      <div class="col-lg-4 col-xl-3 pt-5 mt-1">
-        <?= $page->time->{r('-', '_', $site->language)}; ?>
-        <?php if ($tags = $page->tags): ?>
-        <br>
-        <?= self::get('page.tags', ['tags' => $tags]); ?>
-        <?php endif; ?>
-      </div>
-      <div class="col-lg-8 col-xl-6 pt-5">
-        <h1 class="mb-5">
+    <div class="row d-flex align-items-stretch">
+      <div class="col-lg-9 col-xl-8 m-auto py-5">
+        <h1 class="mb-3">
           <?= $page->title; ?>
         </h1>
         <div class="lead my-5">

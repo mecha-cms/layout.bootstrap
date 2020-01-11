@@ -34,36 +34,29 @@ $description = $page->description;
 <?php endif; ?>
 
 <?php if ($pages->count): ?>
-<?php foreach ($pages as $page): ?>
-<hr class="m-0">
-<div class="container my-5">
-  <div class="row">
-    <div class="col-lg-4 col-xl-3 pb-5">
-      <h2 class="mb-3">
-        <?= $page->title; ?>
-      </h2>
-      <?= $page->time->{r('-', '_', $site->language)}; ?>
-      <?php if ($tags = $page->tags): ?>
-      <br>
-      <?= self::get('page.tags', ['tags' => $tags]); ?>
-      <?php endif; ?>
-    </div>
-    <div class="col-lg-8 col-xl-6">
-      <?php if ($image = $page->image(800, 600)): ?>
-      <a href="<?= $page->url; ?>">
-        <img alt="<?= w($page->title); ?>" class="img-fluid rounded" src="<?= $image; ?>">
-      </a>
-      <?php endif; ?>
-      <div class="lead <?= $image ? 'my-4' : 'mb-4'; ?>">
+<div class="container pt-2 pb-5 my-3 overflow-hidden">
+  <div class="row m-n5">
+    <?php foreach ($pages as $page): ?>
+    <div class="col-md-6 col-lg-4 p-5 align-self-stretch">
+      <div class="d-flex flex-column h-100">
+        <?php if ($image = $page->image(246, 185)): ?>
+        <a href="<?= $page->url; ?>">
+          <img src="<?= $image; ?>" class="mb-4 rounded img-fluid" alt="<?= basename($image); ?>">
+        </a>
+        <?php endif; ?>
+        <h5 class="mb-3"><?= $page->title; ?></h5>
         <?= $page->excerpt ?? $page->description; ?>
+        <p><small><?= $page->time->{r('-', '_', $site->language)}; ?></small></p>
+        <div class="d-flex mt-auto pt-2">
+          <a href="<?= $page->url; ?>" class="btn btn-outline-dark btn-sm">
+            <?= i('More'); ?>
+          </a>
+        </div>
       </div>
-      <a class="btn btn-outline-dark btn-sm" href="<?= $page->url; ?>">
-        <?= i('More'); ?>
-      </a>
     </div>
+    <?php endforeach; ?>
   </div>
 </div>
-<?php endforeach; ?>
 <?= self::pager(); ?>
 <?php endif; ?>
 
